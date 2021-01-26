@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LotteryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EMP">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="emp_id" Type="nvarchar" MaxLength="4" />
+          <Property Name="emp_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lottery_step1">
+          <Key>
+            <PropertyRef Name="lottery_id" />
+          </Key>
+          <Property Name="lottery_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lottery_num_1" Type="int" />
+          <Property Name="lottery_num_2" Type="int" />
+          <Property Name="lottery_num_3" Type="int" />
+          <Property Name="lottery_num_4" Type="int" />
+          <Property Name="lottery_num_5" Type="int" />
+          <Property Name="winner" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="LotteryModelStoreContainer">
+          <EntitySet Name="EMP" EntityType="Self.EMP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lottery_step1" EntityType="Self.Lottery_step1" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LotteryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Lottery_step1">
+          <Key>
+            <PropertyRef Name="lottery_id" />
+          </Key>
+          <Property Name="lottery_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lottery_num_1" Type="Int32" />
+          <Property Name="lottery_num_2" Type="Int32" />
+          <Property Name="lottery_num_3" Type="Int32" />
+          <Property Name="lottery_num_4" Type="Int32" />
+          <Property Name="lottery_num_5" Type="Int32" />
+          <Property Name="winner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="LotteryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Lottery_step1" EntityType="Self.Lottery_step1" />
+          <EntitySet Name="EMPs" EntityType="LotteryModel.EMP" />
+        </EntityContainer>
+        <EntityType Name="EMP">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="emp_id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="emp_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LotteryModelStoreContainer" CdmEntityContainer="LotteryEntities">
+          <EntitySetMapping Name="Lottery_step1">
+            <EntityTypeMapping TypeName="LotteryModel.Lottery_step1">
+              <MappingFragment StoreEntitySet="Lottery_step1">
+                <ScalarProperty Name="lottery_id" ColumnName="lottery_id" />
+                <ScalarProperty Name="lottery_num_1" ColumnName="lottery_num_1" />
+                <ScalarProperty Name="lottery_num_2" ColumnName="lottery_num_2" />
+                <ScalarProperty Name="lottery_num_3" ColumnName="lottery_num_3" />
+                <ScalarProperty Name="lottery_num_4" ColumnName="lottery_num_4" />
+                <ScalarProperty Name="lottery_num_5" ColumnName="lottery_num_5" />
+                <ScalarProperty Name="winner" ColumnName="winner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPs">
+            <EntityTypeMapping TypeName="LotteryModel.EMP">
+              <MappingFragment StoreEntitySet="EMP">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="emp_name" ColumnName="emp_name" />
+                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

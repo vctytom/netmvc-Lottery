@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewBag.Title = "篩選";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div id="vueApp">
+    <input v-model="search_1" typeof="string" size="5">
+    <input v-model="search_2" typeof="string" size="5">
+    <input v-model="search_3" typeof="string" size="5">
+    <input v-model="search_4" typeof="string" size="5">
+    <input v-model="search_5" typeof="string" size="5">
+    <div class="main">
+        <table class="table">
+            <thead>
+                <tr class="table-info">
+                    <th>
+                        項次
+                    </th>
+                    <th>
+                        員工編號
+                    </th>
+                    <th>
+                        名稱
+                    </th>
+                    <th>
+                        號碼1
+                    </th>
+                    <th>
+                        號碼2
+                    </th>
+                    <th>
+                        號碼3
+                    </th>
+                    <th>
+                        號碼4
+                    </th>
+                    <th>
+                        號碼5
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(pj,index) in items">
+                    <td>
+                        {{index+1}}
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td v-for="a in pj.lottery_list">
+                        {{a}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+    </div>
+<script type="text/javascript">
+    //let githubURL = new URL(location.href);
+    //let params = githubURL.searchParams;
+    //console.log(params.get('yy'));
+    new Vue({
+        el: "#vueApp",
+        data() {
+            return {
+                search_1: '',
+                search_2: '',
+                search_3: '',
+                search_4: '',
+                search_5: '',
+                projects: null
+            }
+        },
+        mounted() {
+            axios
+                .get("./GetNumsJSONResult")
+                .then(response => {
+
+                    this.projects = response.data.ja;
+                    console.log(this.projects);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        computed: {
+            items: function () {
+                var search_1 = this.search_1;
+                var search_2 = this.search_2;
+                var search_3 = this.search_3;
+                var search_4 = this.search_4;
+                var search_5 = this.search_5;
+
+                if (search_1 || search_2 || search_3 || search_4 || search_5) {
+                    var reg = search_1;
+                    //var reg=["34", "11", "38", "9", "22"];
+
+                    return this.projects.filter(function (e) {
+
+                        var list = e;
+
+                        if (search_1) {
+                            if ((list.lottery_list).indexOf(search_1) < 0) {
+                                list = null;
+                            }
+                        }
+                        //console.log(list)
+                        if (search_2 && list) {
+                            if ((list.lottery_list).indexOf(search_2) < 0) {
+                                list = null;
+                            }
+                        }
+                        if (search_3 && list) {
+                            if ((list.lottery_list).indexOf(search_3) < 0) {
+                                list = null;
+                            }
+                        }
+                        if (search_4 && list) {
+                            if ((list.lottery_list).indexOf(search_4) < 0) {
+                                list = null;
+                            }
+                        }
+                        if (search_5 && list) {
+                            if ((list.lottery_list).indexOf(search_5) < 0) {
+                                list = null;
+                            }
+                        }
+
+                        //console.log(e.lottery_list.includes(reg) == false);
+
+                        return list;
+                        //匹配某个字段
+                        //  return e.name.match(reg);
+                    })
+
+                };
+                return this.projects;
+            }
+        }
+    })
+
+</script>

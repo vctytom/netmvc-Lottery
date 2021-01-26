@@ -1,0 +1,88 @@
+﻿
+@model IEnumerable<Lottery.Models.ViewModel.IndexViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+<h2>Index</h2>
+@{
+    var a = 1;
+}
+<!--
+<div class="col-md-2">
+    <button type="button" onclick="getDataList()">getdata</button>
+</div>
+
+<div class="col-md-2">
+    <button type="button" onclick="addDataList()">adddata</button>
+</div>
+
+<div class="col-md-2">
+    <button type="button" onclick="ClearAllNum()">ClearAllNum</button>
+</div>
+-->
+<div id="SumCount">
+    共 @ViewBag.SumCount 組號碼
+</div>
+<table class="table">
+    <tr>
+        <th>
+            項次
+        </th>
+        <th>
+            員工編號
+        </th>
+        <th>
+            名稱
+        </th>
+        <th>
+            號碼1
+        </th>
+        <th>
+            號碼2
+        </th>
+        <th>
+            號碼3
+        </th>
+        <th>
+            號碼4
+        </th>
+        <th>
+            號碼5
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @a
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emp_id)
+            </td>
+            <td>
+                人名
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lottery_num_1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lottery_num_2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lottery_num_3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lottery_num_4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lottery_num_5)
+            </td>
+        </tr>
+
+        a = a + 1;
+    }
+
+</table>
