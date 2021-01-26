@@ -102,5 +102,28 @@ namespace Lottery.Services
 
             return myLists;
         }
+        public IQueryable<LotteryIncName> GetLotteryIncNameLlist()
+        {
+            var data =
+               (from d in db.Lottery_step1
+                join c in db.EMPs on d.winner equals c.emp_id into c_sub
+                from c in c_sub.DefaultIfEmpty()
+
+                select new LotteryIncName
+                {
+                    emp_name = c.emp_name,
+                    emp_id = d.winner,
+                    lottery_num_1 = d.lottery_num_1,
+                    lottery_num_2 = d.lottery_num_2,
+                    lottery_num_3 = d.lottery_num_3,
+                    lottery_num_4 = d.lottery_num_4,
+                    lottery_num_5 = d.lottery_num_5,
+                    lottery_id=d.lottery_id,
+                    create_date=d.create_date
+                });
+
+            return data;
+        }
+           
     }
 }

@@ -16,24 +16,10 @@ namespace Lottery.Controllers
 
         LotteryServices service = new LotteryServices();
         //號碼最大上限
-        int maxlottery = 10;
 
         public ActionResult Index()
         {
-            var data =
-                (from d in db.Lottery_step1
-                 join c in db.EMPs on d.winner equals c.emp_id into c_sub
-                 from c in c_sub.DefaultIfEmpty()
-
-                 select new IndexViewModel
-                 {
-                     emp_id = d.winner,
-                     lottery_num_1 = d.lottery_num_1,
-                     lottery_num_2 = d.lottery_num_2,
-                     lottery_num_3 = d.lottery_num_3,
-                     lottery_num_4 = d.lottery_num_4,
-                     lottery_num_5 = d.lottery_num_5
-                 }).ToList();
+            var data =service.GetLotteryIncNameLlist().ToList();
             
 
             ViewBag.SumCount = data.Count();
@@ -93,15 +79,16 @@ namespace Lottery.Controllers
         public ActionResult GetNumsJSONResult()
         {
             //取得所有號碼，回傳json格式(有排序)
-            var data = service.GetLotteryData();
-                //.OrderBy(x => x.lottery_num_5)
-                //.OrderBy(x => x.lottery_num_4)
-                //.OrderBy(x => x.lottery_num_3)
-                //.OrderBy(x => x.lottery_num_2)
-                //.OrderBy(x => x.lottery_num_1);
+            var data = service.GetLotteryIncNameLlist();
+            //.OrderBy(x => x.lottery_num_5)
+            //.OrderBy(x => x.lottery_num_4)
+            //.OrderBy(x => x.lottery_num_3)
+            //.OrderBy(x => x.lottery_num_2)
+            //.OrderBy(x => x.lottery_num_1);
 
-            
-            List<Dictionary<string, string[]>> ja = new List<Dictionary<string, string[]>>();
+
+            //List<Dictionary<string, string[]>> ja = new List<Dictionary<string, string[]>>();
+            List<RootObject> ja = new List<RootObject>();
             foreach (var item in data)
             {
                 RootObject root = new RootObject();
@@ -112,23 +99,27 @@ namespace Lottery.Controllers
                     item.lottery_num_4.ToString(),
                     item.lottery_num_5.ToString(),
                 };
+                root.lottery_list = lottery_list;
+                root.lottery_id = item.lottery_id.ToString();
+                root.emp_id = item.emp_id;
+                root.emp_name = item.emp_name;
+                root.lottery_id = item.lottery_id.ToString();
+                ja.Add(root);
 
                 //Dictionary<string, string> j_emp_id = new Dictionary<string, string>();
                 //Dictionary<string, string[]> j_lottery_num = new Dictionary<string, string[]>();
                 //Dictionary<string, List<Dictionary<string, string[]>>> ji = new Dictionary<string, List<Dictionary<string, string[]>>>();
                 //j_emp_id.Add("emp_id", item.winner.ToString());
 
-                j_lottery_num.Add("lottery_list", new string[] {
+                //j_lottery_num.Add("lottery_list", new string[] {
                     
-                    item.lottery_num_1.ToString(),
-                    item.lottery_num_2.ToString(),
-                    item.lottery_num_3.ToString(),
-                    item.lottery_num_4.ToString(),
-                    item.lottery_num_5.ToString(),
+                //    item.lottery_num_1.ToString(),
+                //    item.lottery_num_2.ToString(),
+                //    item.lottery_num_3.ToString(),
+                //    item.lottery_num_4.ToString(),
+                //    item.lottery_num_5.ToString(),
                     
-                });
-                
-                ja.Add(j_lottery_num);
+                //});
                 
             }
             return Json(new { ja }, JsonRequestBehavior.AllowGet);

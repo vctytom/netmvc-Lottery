@@ -8,17 +8,17 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2774DAD0-EB55-4772-88A5-C429A9A518CE}</ProjectGuid>
+    <ProjectGuid>{5BC4FD8C-19E1-436A-A945-4CB8D504EBD0}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lottery</RootNamespace>
-    <AssemblyName>Lottery</AssemblyName>
+    <RootNamespace>Lottery_www2</RootNamespace>
+    <AssemblyName>Lottery_www2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44301</IISExpressSSLPort>
+    <IISExpressSSLPort>44358</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -142,20 +142,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BuyerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LotteryModel.Designer.cs">
+    <Compile Include="Models\BuyerModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LotteryModel.edmx</DependentUpon>
+      <DependentUpon>BuyerModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\EMP.cs">
-      <DependentUpon>BuyerModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LotteryModel.cs" />
     <Compile Include="Models\Lottery_step1.cs">
       <DependentUpon>BuyerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LotteryIncName.cs" />
-    <Compile Include="Models\ViewModel\ListNumViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LotteryServices.cs" />
   </ItemGroup>
@@ -171,23 +165,23 @@
     <Content Include="Models\BuyerModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BuyerModel.Context.cs</LastGenOutput>
-      <DependentUpon>LotteryModel.edmx</DependentUpon>
+      <DependentUpon>BuyerModel.edmx</DependentUpon>
     </Content>
     <Content Include="Models\BuyerModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LotteryModel.edmx</DependentUpon>
+      <DependentUpon>BuyerModel.edmx</DependentUpon>
       <LastGenOutput>BuyerModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\axios.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\LotteryModel.edmx">
+    <EntityDeploy Include="Models\BuyerModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LotteryModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>BuyerModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\LotteryModel.edmx.diagram">
-      <DependentUpon>LotteryModel.edmx</DependentUpon>
+    <Content Include="Models\BuyerModel.edmx.diagram">
+      <DependentUpon>BuyerModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -199,8 +193,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\vue.js" />
-    <Content Include="Scripts\vue.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -251,9 +243,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57132</DevelopmentServerPort>
+          <DevelopmentServerPort>54490</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44301/</IISUrl>
+          <IISUrl>https://localhost:44358/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

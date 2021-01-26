@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lottery.Models
+namespace Lottery_www2.Models
 {
     using System;
     using System.Collections.Generic;

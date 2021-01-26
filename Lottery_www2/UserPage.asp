@@ -9,7 +9,7 @@
 </head>
 <body>
     <!--人工選號-->
-    <form id="idForm" method="post" action="https://localhost:44348/Home/AddSingleData">
+    <form id="idForm" method="post" action="https://localhost:44358/Home/AddSingleData">
         <div>
             <label for="emp_id">員工編號</label>
             <input name="emp_id" id="emp_id" type="text" required>
@@ -56,8 +56,8 @@
         $("#btn_random").click(function () {
             $.ajax({
                 type: "POST",
-                url: "https://localhost:44348/Home/AddSingleDataRandom",
-                data: { random_emp_id:448},
+                url: "https://localhost:44358/Home/AddSingleDataRandom",
+                data: { random_emp_id:705},
                 success: function (data) {
                     console.log(data);
                     
@@ -71,7 +71,7 @@
                             data.responseText.lottery_num_4,
                             data.responseText.lottery_num_5);
                         alert(msg);
-                        window.location.href = "/";
+                        //window.location.href = "/";
                     } else {
                         alert(data.responseText);
                     }
@@ -104,7 +104,7 @@
                     console.log(data);
                     alert(data.responseText);
                     if (data.status === 'success') {
-                        window.location.href = "/";
+                        //window.location.href = "/";
                     }
                 }
             });

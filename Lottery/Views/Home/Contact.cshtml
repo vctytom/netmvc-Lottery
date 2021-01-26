@@ -19,6 +19,9 @@
                         項次
                     </th>
                     <th>
+                        lottery_id
+                    </th>
+                    <th>
                         員工編號
                     </th>
                     <th>
@@ -47,8 +50,13 @@
                         {{index+1}}
                     </td>
                     <td>
+                        {{pj.lottery_id}}
                     </td>
                     <td>
+                        {{pj.emp_id}}
+                    </td>
+                    <td>
+                        {{pj.emp_name}}
                     </td>
                     <td v-for="a in pj.lottery_list">
                         {{a}}
